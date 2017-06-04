@@ -1,0 +1,119 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+	<title>{% block title %}{% endblock %} &ndash; MFC</title>
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="{% static 'mfc/../../static/mfc/libs/bootstrap/bootstrap-grid-3.3.1.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/../../static/mfc/libs/font-awesome-4.2.0/css/font-awesome.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/../../static/mfc/libs/fancybox/jquery.fancybox.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/../../static/mfc/libs/owl-carousel/owl.carousel.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/../../static/mfc/libs/countdown/jquery.countdown.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/css/fonts.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/css/main.css' %}" />
+	<link rel="stylesheet" href="{% static 'mfc/css/media.css' %}" />
+    <link rel="stylesheet" href="{% static 'mfc/css/style.css' %}" />
+
+
+</head>
+
+<body>
+<div class="wrap">
+<header>
+
+</header>
+    <!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+    <![endif]-->
+     <script src="{% static 'mfc/../../static/mfc/libs/jquery/jquery-1.11.1.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/jquery-mousewheel/jquery.mousewheel.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/fancybox/jquery.fancybox.pack.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/waypoints/waypoints-1.6.2.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/scrollto/jquery.scrollTo.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/owl-carousel/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/countdown/jquery.plugin.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/countdown/jquery.countdown.min.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/countdown/jquery.countdown-ru.js' %}"></script>
+     <script src="{% static 'mfc/../../static/mfc/libs/landing-nav/navigation.js' %}"></script>
+     <script src="{% static 'mfc/js/common_.js' %}"></script>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <div class="nav_container">
+    <nav>
+        <img src="{% static 'mfc/images/brand1.png' %} ">
+        <a href="{% url 'main' %}">Главная</a>
+            <a href="{% url 'news' %}">Новости</a>
+            <a href="{% url 'services' %}">Услуги</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
+            {% if username %}
+                <a href="{% url 'cabinet' %}">Личный кабинет</a>
+            {% else %}
+                <a href="{% url 'login' %}">Личный кабинет</a>
+            {% endif %}
+            {% if username %}
+                <a href="{% url 'logout' %}">Выйти ({{ username }})</a>
+            {% else %}
+                <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
+    </nav>
+ </div>
+
+    <div class="container main-content">
+{% block content %}
+
+{% endblock %}
+
+    {% block login %}
+    {% endblock %}
+        {% block registration %}
+
+    {% endblock %}
+
+{% block add_script %}
+
+{% endblock %}
+</div>
+<footer>
+    <div class="container_footer">
+            <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                    <p>Главный портал и Госуслуги</p>
+                    <a href='http://www.mfc61.ru/'>Сеть многофункциональных центров РО</a>
+                    <br>
+                    <a href='http://61.gosuslugi.ru/'>Портал государственных и муниципальных услуг</a>
+                </div>
+                <div class="col-md-3">
+                    <p>МФЦ</p>
+                    <a href="{% url 'tasks' %}">Цели и задачи</a>
+                    <br>
+                    <a href="{% url 'regulations' %}">Правила организации</a>
+                </div>
+                <div class="col-md-3">
+                    <p>Информация</p>
+                    <a href="{% url 'instructions' %}">Инструкция пользователя</a>
+                    <br>
+                    <h5>&copy 2017 Сеть многофункциональных центров Ростовской области</h5>
+                </div>
+
+            </div>
+    </div>
+</footer>
+
+  	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+</div>
+</body>
+</html>

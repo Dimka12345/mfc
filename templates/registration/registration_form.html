@@ -1,0 +1,39 @@
+{% extends 'mfc/base.html' %}
+{% block registration %}
+<div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                        <div class="container_registration">
+                    <section id="content">
+		                <form method="post" action="">
+                            {% csrf_token %}
+                            <dl class="register">
+			                    <h1>Регистрация</h1>
+			                    <div>
+				                    <input type="text" placeholder="Логин" name="username" required="" id="id_username" />
+			                    </div>
+                                <div>
+                                    <input id="id_email" placeholder="Электронная почта" name="email" type="email" required="">
+                                </div>
+			                    <div>
+				                    <input type="password" placeholder="Пароль" name="password1" required="" id="id_password1" />
+			                    </div>
+                                <div>
+				                    <input type="password" placeholder="Повторите пароль" name="password2" required="" id="id_password2" />
+			                    </div>
+			                    <div>
+                                    <input type="submit" value="Зарегистрироваться"  class="clearfix">
+			                    </div>
+                            </dl>
+                </form><!-- form -->
+                    </section><!-- content -->
+                </div>
+                <div class="col-md-4">
+                </div>
+		    </div>
+            </div>
+</div><!-- container -->
+
+{% endblock %}

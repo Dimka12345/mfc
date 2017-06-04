@@ -1,0 +1,16 @@
+{% extends "mfc/base.html" %}
+{% csrf_token %}
+{% block content %}
+    <div class="container_complete_registration">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="alert alert-success">
+                    <Strong>Здравствуйте, {{ user }}!</Strong>
+                    Ваша учетная запись активирована. <a href="{% url 'main' %}" class="alert-link">Заходите на сайт.</a>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}

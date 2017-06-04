@@ -1,0 +1,47 @@
+{% extends 'mfc/base.html' %}
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+    <section class="content_news">
+    <div class="container">
+        <div class="row">
+            <div class="news_content_title">
+                <div class="col-md-12">
+                    <h3>Интересующая вас новость</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                    <div class="container_one_new">
+                        <div class="new_item_one">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>{{ new.title }}</h3>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><a class="fancyimage" href="{{ new.picture.photo.url }}"> <img class="img-responsive" src="{{ new.picture.photo.url }}"></a>{{ new.text }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>{{ new.time_of_publishing }}</h5>
+                    </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    </section>
+
+    <script type="text/javascript">
+  $(document).ready(function() {
+    $("a.fancyimage").fancybox();
+  });
+</script>
+
+{% endblock %}

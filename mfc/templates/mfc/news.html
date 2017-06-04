@@ -1,0 +1,52 @@
+{% extends 'mfc/base.html' %}
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+    <section class="content_news">
+    <div class="container">
+        <div class="row">
+            <div class="news_all_content_title">
+                <div class="col-md-12">
+                    <h3>Архив Новостей МФЦ города Азова</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {% for new in news %}
+                    <div class="container_news">
+                        <div class="new_item_new">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3><a href="{% url 'one_new'  new.id %}">{{ new.title }}</a></h3>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="{% url 'one_new'  new.id %}"> <img src="{{ new.picture.photo.url }}"></a>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4><a href="{% url 'one_new'  new.id %}">{{ new.get_short_text }}...</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>{{ new.time_of_publishing }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    </section>
+
+    <script type="text/javascript">
+  $(document).ready(function() {
+    $("a.fancyimage").fancybox();
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'mfc/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Личный кабинет
+{% endblock %}
+{% block content %}
+        <h1>Введите новое имя документа</h1>
+    {% if username %}
+        <form action="{% url 'delete_document' id=document.id %}" method="post" class="Delete_Document_Form">
+            {% csrf_token %}
+            {{ form__.title}}
+            <img class="img-responsive" src="{{ document.picture.url }}">
+            <button type="submit" class="save btn btn-default">Сохранить изменения</button>
+        </form>
+{% endif %}
+
+{% endblock %}

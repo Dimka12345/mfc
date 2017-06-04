@@ -1,0 +1,18 @@
+{% extends "mfc/base.html"  %}
+{% csrf_token %}
+{% block content %}
+    <div class="container_complete_registration">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="alert alert-success">
+                    <h3>Регистрация завершена</h3>
+                    <h5>Спасибо за уделённое время. На вашу электронную почту отправлен
+                    код подтверждения. Необходимо подтвердить регистрацию,
+                    просто перейдя по указанной ссылке. Код будет активен в течение 48 часов.</h5>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,220 @@
+{% extends 'mfc/base.html' %}
+
+{% block title %}
+Заказ услуги
+{% endblock %}
+
+{% block content %}
+    {{ form_.media }}
+    {% if username %}
+        <div class="container_order_service">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="container_order_description">
+                        <h3><legend>Заказ услуги</legend></h3>
+                        <h3>{{ service.title }}</h3>
+                        <h3>Описание услуги</h3><h4>{{ service.description }}</h4>
+                        <h4>Стоимость: {{ service.cost }} руб.</h4>
+                        <h4>Перечень необходимых документов: {{ service.documents }}</h4>
+                        <h4>Всего документов необходимо: {{ service.count_of_documents }}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="container_document_load">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <h4>1. Загрузите необходимые документы в форму заказа услуги или выберите из ранее загруженных</h4>
+                                <h4>Загрузка нового документа</h4>
+                                <form class="Add_Document_Form" action="{% url 'order_service' service.id %}" method="post" enctype="multipart/form-data" name="Add_Document_Form">
+                                    {% csrf_token %}
+                                            <input id="id_picture" name="picture" type="file" required="">
+                                            <label for="form_.title"><h5>Введите название документа</h5></label>
+                                            <input id="id_title" maxlength="200" name="title" type="text" placeholder="Не более 200 символов" required="">
+                                            <div class="container_document_load_button">
+                                                <div class="row">
+                                                    <p><input type="submit" value="ЗАГРУЗИТЬ ДОКУМЕНТ"></p>
+                                                </div>
+                                            </div>
+                                </form>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <img src="{{ document.picture.url }}" />
+                                <form action="{% url 'order_service' service.id %}" method="post" class="Order_Service_Form">
+                                    {% csrf_token %}
+                                    <h4>Выбор необходимого документа из ранее загруженных</h4>
+                                    {% if service.count_of_documents == 1 %}
+                                        <label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                        {% elif service.count_of_documents == 2%}
+                                                <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                            {% elif service.count_of_documents == 3 %}
+                                                    <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                    <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                    <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                {% elif service.count_of_documents == 4 %}
+                                                        <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                        <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                        <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                        <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                    {% elif service.count_of_documents == 5 %}
+                                                            <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                            <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                            <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                            <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                            <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                        {% elif service.count_of_documents == 6 %}
+                                                                <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                                <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                                <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                                <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                                <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                                <p><label for="form.participant_six">Выберите документ:</label>{{ form.participant_six }}
+                                                            {% elif service.count_of_documents == 7 %}
+                                                                    <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                                    <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                                    <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                                    <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                                    <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                                    <p><label for="form.participant_six">Выберите документ:</label>{{ form.participant_six }}
+                                                                    <p><label for="form.participant_seven">Выберите документ:</label>{{ form.participant_seven }}
+                                                                {% elif service.count_of_documents == 8 %}
+                                                                        <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                                        <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                                        <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                                        <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                                        <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                                        <p><label for="form.participant_six">Выберите документ:</label>{{ form.participant_six }}
+                                                                        <p><label for="form.participant_seven">Выберите документ:</label>{{ form.participant_seven }}
+                                                                        <p><label for="form.participant_eight">Выберите документ:</label>{{ form.participant_eight }}
+                                                                    {% elif service.count_of_documents == 9 %}
+                                                                            <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                                            <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                                            <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                                            <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                                            <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                                            <p><label for="form.participant_six">Выберите документ:</label>{{ form.participant_six }}
+                                                                            <p><label for="form.participant_seven">Выберите документ:</label>{{ form.participant_seven }}
+                                                                            <p><label for="form.participant_eight">Выберите документ:</label>{{ form.participant_eight }}
+                                                                            <p><label for="form.participant_nine">Выберите документ:</label>{{ form.participant_nine }}
+                                                                        {% elif service.count_of_documents == 10 %}
+                                                                                <p><label for="form.participant_one">Выберите документ:</label>{{ form.participant_one }}
+                                                                                <p><label for="form.participant_two">Выберите документ:</label>{{ form.participant_two }}
+                                                                                <p><label for="form.participant_three">Выберите документ:</label>{{ form.participant_three }}
+                                                                                <p><label for="form.participant_four">Выберите документ:</label>{{ form.participant_four }}
+                                                                                <p><label for="form.participant_five">Выберите документ:</label>{{ form.participant_five }}
+                                                                                <p><label for="form.participant_six">Выберите документ:</label>{{ form.participant_six }}
+                                                                                <p><label for="form.participant_seven">Выберите документ:</label>{{ form.participant_seven }}
+                                                                                <p><label for="form.participant_eight">Выберите документ:</label>{{ form.participant_eight }}
+                                                                                <p><label for="form.participant_nine">Выберите документ:</label>{{ form.participant_nine }}
+                                                                                <p><label for="form.participant_ten">Выберите документ:</label>{{ form.participant_ten }}
+                                                                            {% else %}
+                                    {% endif %}
+                                <div class="col-md-1"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>2. Убедитесь в правильности ваших паспортных данных перед подтверждением
+                                            заказа, в случае ошибок - отредактируйте эти данные в личном кабинете</h4>
+                                            <div class="container_passport_data">
+                                                <table class="table table-striped table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Паспортные данные</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Серийный номер</td>
+                                                            <td>{{ passport.serial_number }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Фамилия</td>
+                                                            <td>{{ passport.surname }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Имя</td>
+                                                            <td>{{ passport.name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>Отчество</td>
+                                                            <td>{{ passport.middle_name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>Пол</td>
+                                                            <td>{{ passport.sex }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>6</td>
+                                                            <td>Дата рождения</td>
+                                                            <td>{{ passport.date_of_birth }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>7</td>
+                                                            <td>Место рождения</td>
+                                                            <td>{{ passport.place_of_birth }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>8</td>
+                                                            <td>Паспорт выдан</td>
+                                                            <td>{{ passport.issued_by }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>9</td>
+                                                            <td>Дата выдачи</td>
+                                                            <td>{{ passport.date_of_issue }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>10</td>
+                                                            <td>Место регистрации</td>
+                                                            <td>{{ passport.place_of_registration }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h4>3. Подтвердите заказ услуги и следите за его состоянием, получая уведомления по электронной почте или нажмите кнопку
+                                                    "отменить заказ" для отмены и возврата к перечню услуг</h4>
+                                                <div class="container_order_service_button_center">
+                                                    <div class="container_document_load_button_bottom">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <form>
+                                                                    <input type="button" value="ОТМЕНИТЬ ЗАКАЗ" onClick='location.href="{% url 'services' %}"'>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p><input type="submit" value="ПОДТВЕРДИТЬ ЗАКАЗ"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block add_script %}
+{% endblock %}

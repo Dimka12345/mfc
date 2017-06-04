@@ -1,0 +1,74 @@
+{% extends 'mfc/base.html' %}
+
+{% block title %}
+Перечень услуг
+{% endblock %}
+
+{% block content %}
+    <div class="container_services_general">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="container_services">
+                    <h3>Перечень услуг, оказываемых Многофункциональным центром города Азова</h3>
+                    <div class="panel-group" id="accordion">
+                        {% for service in service %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ service.id }}">{{ service.title }}</a></h4>
+                                </div>
+                                <div id="collapse{{ service.id }}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h3>Описание услуги</h3>
+                                        <h4>{{ service.description }}</h4>
+                                        {% if service.cost == 'бесплатно' %}
+                                            <h4>Стоимость: {{ service.cost }}</h4>
+                                        {% else %}
+                                            <h4>Стоимость: {{ service.cost }}руб.</h4>
+                                        {% endif %}
+                                        <h4>Перечень необходимых документов: {{ service.documents }}</h4>
+                                        <h4>Всего докуметов необходимо: {{ service.count_of_documents }}</h4>
+                                        {% if username %}
+                                            {% if passport %}
+                                                <div class="row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-5">
+                                                        <div class="container_button_services">
+                                                            <a class="document_edit_button" href="{% url 'order_service'  service.id %}">ЗАКАЗАТЬ УСЛУГУ</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-5">
+                                                        <div class="container_button_services">
+                                                            <a class="document_edit_button" href="{% url 'add_passport_request' %}">ЗАКАЗАТЬ УСЛУГУ</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% else %}
+                                            <div class="row">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-5">
+                                                        <div class="container_button_services">
+                                                            <a class="document_edit_button" href="{% url 'login' %}">ЗАКАЗАТЬ УСЛУГУ</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}

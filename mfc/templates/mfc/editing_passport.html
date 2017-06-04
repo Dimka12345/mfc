@@ -1,0 +1,174 @@
+{% extends 'mfc/base.html' %}
+
+{% block title %}
+Изменение данных
+{% endblock %}
+
+{% block content %}
+    {% if username %}
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="container_editing_passport_main_title">
+                            <h3>Если в ваших данных произошли изменения, Вы можете внести актуальную информацию в формы ниже</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <div class="container_editing_passport">
+                                        <div class="row">
+                                            <h3>Паспортные данные</h3>
+                                        </div>
+                                <form action="{% url 'editing_passport' %}" method="post" class="Passport_Editing_Form">
+                                        {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_serial_number"><h4>Серийный номер:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.serial_number }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_code"><h4>Код подразделения:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.code }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_surname"><h4>Фамилия:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.surname }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_name"><h4>Имя:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.name }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_middle_name"><h4>Отчество:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.middle_name }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_date_of_birth"><h4>Дата рождения:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.date_of_birth }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_place_of_birth"><h4>Место рождения:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.place_of_birth }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_issued_by"><h4>Кем выдан:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.issued_by }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_date_of_issue"><h4>Дата выдачи:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.date_of_issue }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_place_of_registration"><h4>Место прописки:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.place_of_registration }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_sex"><h4>Пол:</h4></label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{ form.sex }}
+                                    </div>
+                                </div>
+                                    <div class="container_editing_passport_button">
+                                        <div class="row">
+                                            <p><input type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"></p>
+                                        </div>
+                                    </div>
+                                    </form>
+                            </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="container_editing_private_date">
+                                    <h3>Контактная информация и номер СНИЛС</h3>
+                                <form action="{% url 'editing_passport' %}" method="post" class="Personal_Info_Form">
+                                        {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="id_phone"><h4>Номер телефона:</h4></label>
+                                    </div>
+                                     <div class="col-md-7">
+                                         {{ form_.phone }}
+                                     </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label for="id_post"><h4>Электронная почта:</h4></label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{ form_.post }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label for="id_snils_number"><h4>Номер СНИЛС:</h4></label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{ form_.snils_number }}
+                                        </div>
+                                        </div>
+                                    <div class="container_editing_private_date_button">
+                                        <div class="row">
+                                            <p><input type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"></p>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+    {% endif %}
+
+{% endblock %}

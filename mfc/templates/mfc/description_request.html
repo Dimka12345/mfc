@@ -1,0 +1,148 @@
+{% extends 'mfc/base.html' %}
+{% load static %}
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block content %}
+
+{% if username %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="container_request_description">
+                <div class="row">
+                <div class="request_label">
+                    <div class="col-md-2">
+                        {% if request.status == 'подана' %}
+                            <img src="{% static 'mfc/images/Подана.png' %}">
+                        {% elif request.status == 'обрабатывается'%}
+                            <img src="{% static 'mfc/images/Обрабатывается.png' %}">
+                        {% elif request.status == 'завершена'%}
+                            <img src="{% static 'mfc/images/Завершена.png' %}">
+                        {% endif %}
+                    </div>
+                </div>
+                    <div class="col-md-10">
+                        <h3>{{ request.title }}</h3>
+                        <h4><p><b>Описание услуги</b></p></h4>
+                        <h4>{{ request.service_fk.description }}</h4>
+                        <h4>Перечень необходимых документов: {{ request.service_fk.documents }}</h4>
+                        {% if request.service_fk.cost == 'бесплатно' %}
+                            <h4>Стоимость услуги: {{ request.service_fk.cost }}</h4>
+                        {% else %}
+                            <h4>Стоимость услуги: {{ request.service_fk.cost }}руб.</h4>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <h4><p><b>Прикреплённые документы</b></p></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        {% if request.participant_one %}
+                            <a class="fancyimage" href="{{ request.participant_one.picture.url }}"><img class="img-responsive" src="{{ request.participant_one.picture.url }}"></a>
+                            <h5>{{ request.participant_one.title }}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        {% if request.participant_two %}
+                            <a class="fancyimage" href="{{ request.participant_two.picture.url }}"><img class="img-responsive" src="{{ request.participant_two.picture.url }}"></a>
+                            <h5>{{ request.participant_two.title }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        {% if request.participant_three %}
+                            <a class="fancyimage" href="{{ request.participant_three.picture.url }}"><img class="img-responsive" src="{{ request.participant_three.picture.url }}"></a>
+                            <h5>{{ request.participant_three.title }}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        {% if request.participant_four %}
+                            <a class="fancyimage" href="{{ request.participant_four.picture.url }}"><img class="img-responsive" src="{{ request.participant_four.picture.url }}"></a>
+                            <h5>{{ request.participant_four.title }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        {% if request.participant_five %}
+                            <a class="fancyimage" href="{{ request.participant_five.picture.url }}"><img class="img-responsive" src="{{ request.participant_five.picture.url }}"></a>
+                            <h5>{{ request.participant_five.title }}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        {% if request.participant_six %}
+                            <a class="fancyimage" href="{{ request.participant_six.picture.url }}"><img class="img-responsive" src="{{ request.participant_six.picture.url }}"></a>
+                            <h5>{{ request.participant_six.title }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        {% if request.participant_seven %}
+                            <a class="fancyimage" href="{{ request.participant_seven.picture.url }}"><img class="img-responsive" src="{{ request.participant_seven.picture.url }}"></a>
+                            <h5>{{ request.participant_seven.title }}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        {% if request.participant_eight %}
+                            <a class="fancyimage" href="{{ request.participant_eight.picture.url }}"><img class="img-responsive" src="{{ request.participant_eight.picture.url }}"></a>
+                            <h5>{{ request.participant_eight.title }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        {% if request.participant_nine %}
+                            <a class="fancyimage" href="{{ request.participant_nine.picture.url }}"><img class="img-responsive" src="{{ request.participant_nine.picture.url }}"></a>
+                            <h5>{{ request.participant_nine.title }}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        {% if request.participant_ten %}
+                            <a class="fancyimage" href="{{ request.participant_ten.picture.url }}"><img class="img-responsive" src="{{ request.participant_ten.picture.url }}"></a>
+                            <h5>{{ request.participant_ten.title }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6">
+                        <h4>Дата подачи заявки - {{ request.date_of_beginning }}</h4>
+                        {% if requests.status == 'завершена' %}
+                            <h4>Дата завершения заявки:{{ requests.date_of_ending }}</h4>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <form>
+                        <div class="container_description_request_button">
+                            <input type="button" value="НАЗАД" onClick='location.href="{% url 'cabinet' %}"'>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+  $(document).ready(function() {
+    $("a.fancyimage").fancybox();
+  });
+</script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base1.html' %}
+{% block login %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                        <div class="container_login">
+                    <section id="content">
+		            <form action="/auth/login/" method="post">
+                    {% csrf_token %}
+			        <h1>Авторизация</h1>
+			        <div>
+				        <input type="text" placeholder="Логин" name="username" required="" id="username" />
+			        </div>
+			        <div>
+				        <input type="password" placeholder="Пароль" name="password" required="" id="password" />
+			        </div>
+			        <div>
+                        <div class="row">
+                            <div class="container_login_button_center">
+                            <input type="submit" value="Войти" />
+                        </div>
+                        </div>
+                        <a href="{% url 'registration_register' %}">Регистрация</a>
+			        </div>
+                    </form><!-- form -->
+                        	</section><!-- content -->
+                </div>
+                <div class="col-md-4">
+                </div>
+		    </div>
+            </div>
+</div><!-- container -->
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'mfc/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+{% block content %}
+    <div class="slider_container">
+        <div class="next_button">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </div>
+        <div class="prev_button">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        </div>
+        <div class="carousel">
+            <div class="slide_item">
+                <img class="center" src="{% static 'mfc/images/delo.jpg' %}" alt="alt">
+            </div>
+            <div class="slide_item">
+                <img class="center" src="{% static 'mfc/images/zhile.jpg' %}" alt="alt">
+            </div>
+            <div class="slide_item">
+                <img class="center" src="{% static 'mfc/images/imya.jpg' %}" alt="alt">
+            </div>
+            <div class="slide_item">
+                <img class="center" src="{% static 'mfc/images/dokumenty.jpg' %}" alt="alt">
+            </div>
+        </div>
+    </div>
+    <section class="content_main">
+        <div class="container">
+        <div class="row">
+            <div class="news_main_content_title">
+            <div class="col-md-12">
+                <h3>Свежие Новости МФЦ города Азова</h3>
+                </div>
+        </div>
+            <div class="col-md-8">
+                {% for new in news_latest %}
+                <div class="container_main">
+                        <div class="new_item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3><a href="{% url 'one_new'  new.id %}">{{ new.title }}</a></h3>
+                                </div>
+                             </div>
+                            <div class="row">
+                            <div class="col-md-4">
+                                <a href="{% url 'one_new'  new.id %}"><img src="{{ new.picture.photo.url }}"></a>
+                            </div>
+                            <div class="col-md-8">
+                                <h4><a href="{% url 'one_new'  new.id %}">{{ new.get_short_text }}...</a></h4>
+                            </div>
+                                </div>
+                        </div>
+                        <h5>{{ new.time_of_publishing }}</h5>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-md-4">
+                <aside class="right_aside_time">
+                <div class="row">
+                   <div class="col-md-4">
+                       <br>
+                       <br>
+                        <h4>Режим работы</h4>
+                   </div>
+                   <div class="col-md-8">
+                        <h5>Пн-Вт, Чт-Пт: 08.00 — 18.00<p>Без перерыва</p></h5>
+                        <h5>Среда: 10.00 — 20.00<p>Без перерыва</p></h5>
+                        <h5>Суббота: 09.00 — 13.00<p>Без перерыва</p></h5>
+                        <h5>Воскресенье — выходной</h5>
+                   </div>
+            </div>
+                    </aside>
+                <div class="row">
+               <aside class="right_aside">
+                   <h4><b>МФЦ г. Азова (центральный офис)</b></h4>
+                   <h5><hr>Филиал МФЦ открыт 01.12.2011</h5>
+                   <h5><hr><i class="glyphicon glyphicon-home"></i>   346780, Ростовская обл., г.Азов, ул.Московская, д.61</h5>
+                   <h5><hr><i class="glyphicon glyphicon-earphone"></i>   call-центр:+7 (86342) 4-70-34</h5>
+                   <h5><hr><i class="glyphicon glyphicon-earphone"></i>   Приемная:+7 (86342) 6-14-19</h5>
+                   <a href="https://mfcazov@mail.ru"><h5><hr><i class="glyphicon glyphicon-envelope"></i>    mfcazov@mail.ru</h5></a>
+                   <a href="http://azov.mfc61.ru/"><h5><hr><i class="glyphicon glyphicon-globe"></i>    azov.mfc61.ru</h5></a>
+                   </aside>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+    <div id="scrollup"><i class="glyphicon glyphicon-triangle-top"></i></div>
+{% endblock %}
+
